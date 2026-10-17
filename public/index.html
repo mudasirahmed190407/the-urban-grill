@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Urban Grill | Great Food, Great Moments</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, sans-serif; color: #29231f; background: #fffaf3; }
+    header { background: #201914; color: white; padding: 22px 7%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+    header h2 { margin: 0; color: #ffbd59; }
+    nav a { color: white; margin-left: 18px; text-decoration: none; }
+    .hero { padding: 85px 7%; color: white; text-align: center; background: linear-gradient(#0008,#0009),url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1600&q=80') center/cover; }
+    .hero h1 { font-size: clamp(36px, 6vw, 62px); margin: 0 0 15px; }
+    .hero p { font-size: 19px; }
+    .btn { display: inline-block; background: #e99b32; color: #201914; padding: 13px 22px; border: 0; border-radius: 6px; font-weight: bold; text-decoration: none; cursor: pointer; }
+    section { padding: 48px 7%; }
+    h2.section-title { text-align: center; font-size: 32px; margin-top: 0; }
+    .menu { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 22px; }
+    .dish { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 3px 14px #00000012; }
+    .dish img { width: 100%; height: 185px; object-fit: cover; display: block; }
+    .dish div { padding: 17px; }
+    .dish h3 { margin: 0 0 8px; }
+    .price { color: #a95617; font-weight: bold; }
+    .booking { max-width: 650px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 3px 14px #00000012; }
+    label { display: block; margin: 12px 0 6px; font-weight: bold; }
+    input, select, textarea { width: 100%; padding: 12px; border: 1px solid #d7cec3; border-radius: 6px; font: inherit; }
+    .booking button { margin-top: 18px; width: 100%; }
+    #message { margin-top: 14px; }
+    footer { background: #201914; color: white; text-align: center; padding: 25px; }
+    @media(max-width:500px) { nav a { margin-left: 8px; font-size: 14px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>🍽 The Urban Grill</h2>
+    <nav>
+      <a href="#menu">Menu</a>
+      <a href="#reservation">Reservation</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Good Food. Great Moments.</h1>
+    <p>Fresh flavours, delicious meals, unforgettable memories.</p>
+    <a class="btn" href="#menu">Explore Our Menu</a>
+  </div>
+
+  <section id="menu">
+    <h2 class="section-title">Our Popular Menu</h2>
+    <div class="menu">
+      <article class="dish">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80" alt="Grilled burger">
+        <div><h3>Classic Grill Burger</h3><p>Juicy grilled burger with fresh toppings.</p><p class="price">$12.99</p></div>
+      </article>
+      <article class="dish">
+        <img src="https://images.unsplash.com/photo-157 pizza" alt="Pizza" onerror="this.src='https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80'">
+        <div><h3>Cheese Pizza</h3><p>Golden crust, rich sauce and melted cheese.</p><p class="price">$14.99</p></div>
+      </article>
+      <article class="dish">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80" alt="Grilled food">
+        <div><h3>Grilled Special</h3><p>Smoky grilled flavours made fresh.</p><p class="price">$16.99</p></div>
+      </article>
+      <article class="dish">
+        <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=700&q=80" alt="Noodles">
+        <div><h3>Urban Noodles</h3><p>Delicious noodles with our signature seasoning.</p><p class="price">$11.99</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="reservation">
+    <h2 class="section-title">Reserve Your Table</h2>
+    <form class="booking" id="bookingForm">
+      <label for="name">Full name</label>
+      <input id="name" name="name" required placeholder="Your name">
+
+      <label for="phone">Phone number</label>
+      <input id="phone" name="phone" required type="tel" placeholder="Your phone number">
+
+      <label for="date">Reservation date</label>
+      <input id="date" name="date" type="date" required>
+
+      <label for="time">Reservation time</label>
+      <input id="time" name="time" type="time" required>
+
+      <label for="guests">Number of guests</label>
+      <select id="guests" name="guests">
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option>
+      </select>
+
+      <label for="notes">Special requests</label>
+      <textarea id="notes" name="notes" rows="3" placeholder="Optional"></textarea>
+
+      <button class="btn" type="submit">Request Reservation</button>
+      <p id="message" role="status">Reservation requests are not connected to a database yet.</p>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2026 The Urban Grill · Great food, great moments.</p>
+  </footer>
+
+  <script>
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      document.getElementById('message').textContent =
+        'The form is ready, but online reservations are not connected yet.';
+    });
+  </script>
+</body>
+</html>
